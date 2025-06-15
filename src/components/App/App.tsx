@@ -20,11 +20,9 @@ export default function App() {
     queryFn: () => fetchMovies(query, 1),
     enabled: query.length > 0,
     staleTime: 5000,
-    cacheTime: 300000,
   });
 
-  // Гарантуємо типізацію: якщо data є — у нього точно є поле results
-  const movies = data?.results ?? [];
+  const movies: Movie[] = data?.results ?? [];
 
   useEffect(() => {
     if (data && !isLoading && !isError && movies.length === 0 && query) {

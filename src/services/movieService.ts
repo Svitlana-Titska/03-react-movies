@@ -1,5 +1,5 @@
 import axios from "axios";
-import type { MoviesResponse, Movie } from "../types/movie";
+import type { MoviesResponse } from "../types/movie"; // ← тільки те, що реально потрібно
 
 const API_URL = "https://api.themoviedb.org/3/search/movie";
 
