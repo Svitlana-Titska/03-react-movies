@@ -23,7 +23,8 @@ export default function App() {
     cacheTime: 300000,
   });
 
-  const movies: Movie[] = data?.results ?? [];
+  // Гарантуємо типізацію: якщо data є — у нього точно є поле results
+  const movies = data?.results ?? [];
 
   useEffect(() => {
     if (data && !isLoading && !isError && movies.length === 0 && query) {
