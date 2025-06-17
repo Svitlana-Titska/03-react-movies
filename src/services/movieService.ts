@@ -1,5 +1,5 @@
 import axios from "axios";
-import type { MoviesResponse } from "../types/movie";
+import type { MoviesResponse } from "../types/movies-response";
 
 const API_URL = "https://api.themoviedb.org/3/search/movie";
 
@@ -13,5 +13,6 @@ export const fetchMovies = async (
       Authorization: `Bearer ${import.meta.env.VITE_TMDB_TOKEN}`,
     },
   });
+
   return response.data;
 };
