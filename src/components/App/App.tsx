@@ -9,7 +9,8 @@ import Loader from "../Loader/Loader";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
 import { fetchMovies } from "../../services/movieService";
-import type { Movie, MoviesResponse } from "../../types/movie";
+import type { Movie } from "../../types/movie";
+import type { MoviesResponse } from "../../types/movies-response";
 
 export default function App() {
   const [query, setQuery] = useState("");
@@ -30,8 +31,7 @@ export default function App() {
     }
   }, [data, isLoading, isError, movies.length, query]);
 
-  const handleSearch = (formData: FormData) => {
-    const newQuery = formData.get("query")?.toString().trim() ?? "";
+  const handleSearch = (newQuery: string) => {
     if (newQuery !== query) {
       setQuery(newQuery);
     }
@@ -48,7 +48,7 @@ export default function App() {
   return (
     <>
       <Toaster />
-      <SearchBar action={handleSearch} />
+      <SearchBar onSubmit={handleSearch} />
       {isLoading && <Loader />}
       {isError && <ErrorMessage />}
       {!isLoading && !isError && movies.length > 0 && (
